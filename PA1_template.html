@@ -274,9 +274,9 @@ sum(!imputed_data$steps[NAorig]==newvalues)</code></pre>
 </div>
 <div id="histogram-mean-and-median-with-imputed-data" class="section level3">
 <h3>Histogram, Mean, and Median with Imputed Data</h3>
-<p>As mentioned earlier, this part is just a repeat of the first histogram, mean, and median with the added twist that it uses the imputed data set. So, I copy pasted the R markdown sections <code>reshapeForHistogram1</code> and <code>histogram1</code> and then replaced these variable names with new ones: hist_data, data, hist.</p>
+<p>As mentioned earlier, this part is just a repeat of the first histogram, mean, and median with the added twist that it uses the imputed data set. So, I copy pasted the R markdown sections <code>reshapeForHistogram1</code> and <code>histogram1</code> and then replaced these variable names with new ones: hist_data, data, hist. I also removed the na.rm=TRUE option because we no longer need it.</p>
 <pre class="r"><code>#library(reshape2) #Already loaded
-hist_data_i&lt;-melt(imputed_data, id=c(&quot;date&quot;, &quot;interval&quot;), na.rm=TRUE)
+hist_data_i&lt;-melt(imputed_data, id=c(&quot;date&quot;, &quot;interval&quot;))
 hist_data_i&lt;-dcast(hist_data_i, date ~ variable, sum)
 head(hist_data_i)</code></pre>
 <pre><code>##         date steps

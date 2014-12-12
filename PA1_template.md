@@ -397,12 +397,12 @@ sum(!imputed_data$steps[NAorig]==newvalues)
 Zero again. All's good in the neighborhood. :)
 
 ### Histogram, Mean, and Median with Imputed Data
-As mentioned earlier, this part is just a repeat of the first histogram, mean, and median with the added twist that it uses the imputed data set.  So, I copy pasted the R markdown sections `reshapeForHistogram1` and `histogram1` and then replaced these variable names with new ones: hist_data, data, hist.
+As mentioned earlier, this part is just a repeat of the first histogram, mean, and median with the added twist that it uses the imputed data set.  So, I copy pasted the R markdown sections `reshapeForHistogram1` and `histogram1` and then replaced these variable names with new ones: hist_data, data, hist. I also removed the na.rm=TRUE option because we no longer need it.
 
 
 ```r
 #library(reshape2) #Already loaded
-hist_data_i<-melt(imputed_data, id=c("date", "interval"), na.rm=TRUE)
+hist_data_i<-melt(imputed_data, id=c("date", "interval"))
 hist_data_i<-dcast(hist_data_i, date ~ variable, sum)
 head(hist_data_i)
 ```
